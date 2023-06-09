@@ -1,4 +1,4 @@
-# 🧩 Development of [ReVanced Patcher](https://github.com/revanced/revanced-patches)
+# 🧩 Development of [ReVanced Patches](https://github.com/revanced/revanced-patches)
 
 This guide teaches the fundamentals of patches and everything necessary to create your own patch from scratch.
 
