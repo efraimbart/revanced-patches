@@ -22,7 +22,7 @@ import java.util.*
 @Compatibility(
     [
         Package("com.laurencedawson.reddit_sync"),
-        Package("com.laurencedawson.reddit_sync.pro")
+        Package("com.laurencedawson.reddit_sync.pro"),
         Package("com.laurencedawson.reddit_sync.dev")
     ]
 )
@@ -54,7 +54,7 @@ class ChangeRedditUrlPatch : BytecodePatch(
 
 
         GetRedditUrlFingerprint.result?.let { fingerprint ->
-            it.scanResult.stringsScanResult!!.matches.forEach { 
+            fingerprint.scanResult.stringsScanResult!!.matches.forEach { 
                 val occurrenceIndex = it.index
 
                 fingerprint.mutableMethod.apply {
