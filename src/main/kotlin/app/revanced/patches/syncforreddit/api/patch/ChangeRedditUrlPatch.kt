@@ -19,7 +19,7 @@ import java.util.*
 
 @Patch
 @Name("change-reddit-url")
-@Description("Changes the Reddit URL to another service.")
+@Description("Replaces the Reddit URL with one from another service.")
 @Compatibility(
     [
         Package("com.laurencedawson.reddit_sync"),
