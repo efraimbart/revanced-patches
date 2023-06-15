@@ -9,8 +9,7 @@ import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.revanced.patcher.fingerprint.method.impl.MethodFingerprint.Companion.resolve
 import app.revanced.patcher.patch.*
 import app.revanced.patcher.patch.annotations.Patch
-import app.revanced.patches.syncforreddit.api.fingerprints.GetAuthorizationStringFingerprint
-import app.revanced.patches.syncforreddit.api.fingerprints.GetBearerTokenFingerprint
+import app.revanced.patches.syncforreddit.api.fingerprints.GetRedditUrlFingerprint
 import org.jf.dexlib2.iface.instruction.OneRegisterInstruction
 import org.jf.dexlib2.iface.instruction.ReferenceInstruction
 import org.jf.dexlib2.iface.reference.StringReference
@@ -29,7 +28,7 @@ import java.util.*
 )
 @Version("0.0.1")
 class ChangeRedditUrlPatch : BytecodePatch(
-    listOf(GetAuthorizationStringFingerprint)
+    listOf(GetRedditUrlFingerprint)
 ) {
     override fun execute(context: BytecodeContext): PatchResult {
         if (url == null) {
@@ -59,9 +58,9 @@ class ChangeRedditUrlPatch : BytecodePatch(
                 val occurrenceIndex = it.index
 
                 fingerprint.mutableMethod.apply {
-                    val authorizationStringInstruction = getInstruction<ReferenceInstruction>(occurrenceIndex)
-                    val targetRegister = (authorizationStringInstruction as OneRegisterInstruction).registerA
-                    val reference = authorizationStringInstruction.reference as StringReference
+                    val redditUrlStringInstruction = getInstruction<ReferenceInstruction>(occurrenceIndex)
+                    val targetRegister = (redditUrlStringInstruction as OneRegisterInstruction).registerA
+                    val reference = redditUrlStringInstruction.reference as StringReference
 
                     val newRedditUrl = reference.string.replace(
                         "reddit.com",
